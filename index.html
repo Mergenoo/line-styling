@@ -3,189 +3,293 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LINE Styling — Bespoke tailoring in Ulaanbaatar</title>
-<meta name="description" content="LINE Styling is a made-to-measure tailoring house in Ulaanbaatar, Mongolia: refined, versatile suits and pieces for men and women.">
-<link rel="preconnect" href="https://api.fontshare.com">
-<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=gambarino@400&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<title>LINE Styling — Bespoke tailoring, Ulaanbaatar</title>
+<meta name="description" content="LINE Styling: made-to-measure and bespoke tailoring for men and women in Ulaanbaatar, Mongolia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAF8F4; --panel: #E9E5DD; --ink: #1B1B1B; --muted: #55575c; --navy: #0E1620; --on-navy: #FAF8F4;
+  --serif: "Cormorant Garamond", Georgia, serif; --sans: "Jost", system-ui, sans-serif;
+  --m: clamp(20px, 3vw, 48px); --ease: cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+img, video, svg { display: block; max-width: 100%; }
+h1,h2,h3,p,ul,figure { margin: 0; padding: 0; } ul { list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.caps { font: 500 12.5px/1.4 var(--sans); letter-spacing: .18em; text-transform: uppercase; }
+.display { font-family: var(--serif); font-weight: 400; line-height: 1.02; letter-spacing: -.01em; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 30px; font: 500 12.5px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; text-decoration: none; border: 1px solid currentColor; background: transparent; color: inherit; cursor: pointer; transition: background-color .3s var(--ease), color .3s var(--ease); }
+.btn-solid { background: var(--on-navy); color: var(--navy); border-color: var(--on-navy); }
+.btn-solid:hover { background: transparent; color: var(--on-navy); }
+.btn-line:hover { background: var(--on-navy); color: var(--navy); }
+.btn-dark { background: var(--navy); color: var(--on-navy); border-color: var(--navy); }
+.btn-dark:hover { background: transparent; color: var(--navy); }
+.link { font: 500 12.5px/1.4 var(--sans); letter-spacing: .16em; text-transform: uppercase; text-underline-offset: .5em; }
+
+/* header */
+.top { position: fixed; inset: 0 0 auto 0; z-index: 20; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 18px var(--m); color: var(--on-navy); transition: background-color .4s var(--ease), color .4s var(--ease), padding .4s var(--ease); }
+.top.solid { background: var(--bg); color: var(--ink); padding-block: 12px; }
+.menu-btn { justify-self: start; background: none; border: 0; color: inherit; font: 500 12.5px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; display: flex; gap: 14px; align-items: center; cursor: pointer; padding: 12px 0; }
+.bars { width: 24px; height: 10px; position: relative; } .bars::before, .bars::after { content: ""; position: absolute; left: 0; right: 0; height: 1.5px; background: currentColor; } .bars::before { top: 0; } .bars::after { bottom: 0; }
+.brand { text-align: center; text-decoration: none; line-height: 1; }
+.brand b { display: block; font: 500 clamp(22px, 2.6vw, 32px)/1 var(--serif); letter-spacing: .14em; }
+.brand small { display: block; margin-top: 6px; font: 400 9.5px/1 var(--sans); letter-spacing: .3em; text-transform: uppercase; }
+.top-r { justify-self: end; }
+.drawer { position: fixed; inset: 0 auto 0 0; width: min(420px, 100%); background: var(--bg); z-index: 30; padding: 28px var(--m); transform: translateX(-102%); transition: transform .5s var(--ease); visibility: hidden; display: flex; flex-direction: column; gap: 32px; }
+.drawer.open { transform: none; visibility: visible; }
+.drawer button { align-self: flex-start; background: none; border: 0; font: 500 12.5px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; cursor: pointer; padding: 12px 0; color: var(--ink); }
+.drawer a { font: 400 32px/1.3 var(--serif); text-decoration: none; display: block; padding: 4px 0; } .drawer a:hover { font-style: italic; }
+.scrim { position: fixed; inset: 0; background: rgba(14,22,32,.5); z-index: 25; opacity: 0; pointer-events: none; transition: opacity .4s; } .scrim.open { opacity: 1; pointer-events: auto; }
+
+/* hero */
+.hero { position: relative; min-height: 100svh; display: grid; align-items: end; color: var(--on-navy); background: var(--navy); isolation: isolate; }
+.hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%; z-index: -2; }
+.hero::before { content: ""; position: absolute; inset: 0; background: rgba(14,22,32,.46); z-index: -1; }
+.hero-in { text-align: center; padding: 0 var(--m) clamp(56px, 9vh, 110px); display: grid; justify-items: center; gap: 22px; }
+.hero h1 { font: italic 400 clamp(3rem, 7.4vw, 6.5rem)/1 var(--serif); letter-spacing: -.01em; }
+.hero p { max-width: 46ch; font-size: 18px; }
+.btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 6px; }
+
+/* promo band */
+.band { background: var(--panel); text-align: center; padding: clamp(72px, 9vw, 130px) var(--m); display: grid; justify-items: center; gap: 22px; }
+.band h2 { font-size: clamp(2.2rem, 4.4vw, 4rem); max-width: 18ch; }
+.band p { max-width: 64ch; color: var(--ink); }
+
+/* section head */
+.sec { padding: clamp(72px, 9vw, 140px) var(--m); }
+.sec-h { text-align: center; display: grid; gap: 14px; justify-items: center; margin-bottom: clamp(36px, 5vw, 64px); }
+.sec-h h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
+
+/* cloth row */
+.cloths { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 1.6vw, 24px); }
+.cloth a { text-decoration: none; display: block; }
+.cloth svg { width: 100%; aspect-ratio: 4/5; height: auto; transition: transform .8s var(--ease); }
+.cloth .frame { overflow: hidden; background: var(--panel); }
+.cloth a:hover svg { transform: scale(1.04); }
+.cloth h3 { font: 500 17px/1.3 var(--sans); margin-top: 14px; }
+.cloth p { color: var(--muted); font-size: 15px; }
+.center { text-align: center; margin-top: clamp(32px, 4vw, 56px); }
+
+/* wardrobe split */
+.split { display: grid; grid-template-columns: 1fr 1fr; background: var(--panel); }
+.split-img { min-height: 70svh; position: relative; } .split-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.split-txt { padding: clamp(48px, 7vw, 120px) var(--m); display: grid; align-content: center; gap: 22px; }
+.split-txt h2 { font-size: clamp(2.2rem, 4vw, 3.6rem); max-width: 14ch; }
+.split-txt p { max-width: 44ch; }
+.pieces { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; margin-top: 8px; max-width: 460px; }
+.pieces a { font: 400 24px/1.2 var(--serif); text-decoration: none; padding: 12px 0; border-bottom: 1px solid rgba(27,27,27,.25); display: flex; justify-content: space-between; }
+.pieces a:hover { font-style: italic; }
+
+/* campaign */
+.campaign { position: relative; min-height: 86svh; display: grid; place-items: center; text-align: center; color: var(--on-navy); isolation: isolate; padding: var(--m); }
+.campaign video, .campaign img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.campaign::before { content: ""; position: absolute; inset: 0; background: rgba(14,22,32,.58); z-index: -1; }
+.campaign div { display: grid; gap: 22px; justify-items: center; max-width: 56ch; }
+.campaign h2 { font-size: clamp(2.6rem, 6vw, 5.5rem); }
+
+/* ateliers */
+.four { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 32px); }
+.four article { background: var(--panel); padding: clamp(24px, 2.4vw, 40px); display: grid; gap: 14px; align-content: start; min-height: 360px; }
+.four .num { font: italic 400 28px/1 var(--serif); }
+.four h3 { font: 400 clamp(1.7rem, 2.3vw, 2.2rem)/1.1 var(--serif); }
+.four p { color: var(--ink); font-size: 16px; }
+.four .link { align-self: end; margin-top: auto; }
+
+/* story */
+.story { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--m); align-items: center; }
+.story figure { min-width: 0; justify-self: center; width: min(100%, 440px); }
+.story img { width: 100%; height: auto; max-height: 78svh; object-fit: contain; object-position: 50% 0; background: var(--panel); }
+.story figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; }
+.story-t { display: grid; gap: 22px; justify-items: start; max-width: 52ch; }
+.story-t blockquote { margin: 0; font: italic 400 clamp(1.8rem, 3vw, 2.8rem)/1.15 var(--serif); }
+
+/* visit */
+.visit { background: var(--navy); color: var(--on-navy); padding: clamp(72px, 9vw, 130px) var(--m); display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--m); row-gap: 48px; }
+.visit h2 { grid-column: 1 / 6; font-size: clamp(2.4rem, 4.4vw, 4rem); }
+.visit-cols { grid-column: 7 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px var(--m); }
+.visit h3 { font: 400 clamp(1.5rem, 2vw, 1.9rem)/1.2 var(--serif); margin-bottom: 8px; }
+.visit p { color: #d7dbe1; }
+.visit ul { margin-top: 12px; display: grid; gap: 2px; } .visit .caps { color: var(--on-navy); }
+
+/* footer */
+.foot { background: var(--panel); padding: clamp(56px, 7vw, 96px) var(--m) 24px; }
+.foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--m); }
+.foot b { display: block; font: 500 28px/1 var(--serif); letter-spacing: .14em; margin-bottom: 14px; }
+.foot h3 { font: 500 12.5px/1.4 var(--sans); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 14px; }
+.foot li a { text-decoration: none; display: inline-block; padding: 4px 0; } .foot li a:hover { text-decoration: underline; }
+.foot-base { margin-top: clamp(48px, 6vw, 88px); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); }
+.foot-base p { max-width: 90ch; }
+
+/* motion */
+.js .rv { opacity: 0; transform: translateY(24px); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: var(--d, 0ms); }
+.js .rv.in { opacity: 1; transform: none; }
+.js .hero-in > * { animation: up 1s var(--ease) both; } .js .hero-in > *:nth-child(2) { animation-delay: .12s; } .js .hero-in > *:nth-child(3) { animation-delay: .24s; }
+.js .hero > img { animation: settle 2.2s var(--ease) both; }
+@keyframes up { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes settle { from { transform: scale(1.08); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } .js .rv { opacity: 1; transform: none; } html { scroll-behavior: auto; } }
+
+@media (max-width: 1000px) {
+  .cloths { grid-template-columns: 1fr 1fr; }
+  .split, .story { grid-template-columns: 1fr; } .split-img { min-height: 50svh; }
+  .four { grid-template-columns: 1fr 1fr; }
+  .visit h2, .visit-cols { grid-column: 1 / -1; }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .top-r { display: none; } .top { grid-template-columns: 1fr auto 1fr; }
+  .menu-btn span.t { display: none; }
+  .four { grid-template-columns: 1fr; } .four article { min-height: 0; }
+  .visit-cols { grid-template-columns: 1fr; }
+  .pieces { grid-template-columns: 1fr; }
+  .btn { width: 100%; max-width: 320px; }
+  .foot-grid { grid-template-columns: 1fr; }
+}
+</style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
 
-<header class="hero" id="top">
-  <h1 class="hero-name">
-    <span class="word word-a">LINE</span>
-    <span class="visually-hidden"> </span>
-    <span class="word word-b">Styling</span>
-    <span class="visually-hidden">, bespoke tailoring in Ulaanbaatar</span>
-  </h1>
-
-  <nav class="hero-nav" aria-label="Primary">
-    <a href="#cloth">Cloth</a>
-    <a href="#process">Process</a>
-    <a href="#archive">Archive</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <div class="hero-film">
-    <img src="assets/shears-iron.jpg" width="1600" height="2083" alt="Watercolour study of a pair of tailor's shears, c. 1939">
-    <p class="small hero-cap">Shears and iron, John Bodine, c. 1939</p>
-  </div>
-
-  <div class="hero-copy">
-    <p>Bespoke suits and tailoring for men and women, cut to measure in Ulaanbaatar.</p>
-    <a class="btn" href="#contact">Book a fitting</a>
-  </div>
+<header class="top" id="top">
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer"><span class="bars" aria-hidden="true"></span><span class="t">Menu</span></button>
+  <a class="brand" href="#top" aria-label="LINE Styling, home"><b>LINE STYLING</b><small>Bespoke tailoring · Ulaanbaatar</small></a>
+  <a class="link top-r" href="#visit">Book a fitting</a>
 </header>
 
-<main id="main">
+<div class="scrim" id="scrim"></div>
+<nav class="drawer" id="drawer" aria-label="Primary" aria-hidden="true">
+  <button type="button" id="menuClose">Close</button>
+  <a href="#cloths">Cloth</a>
+  <a href="#wardrobe">The wardrobe</a>
+  <a href="#services">Services</a>
+  <a href="#house">The house</a>
+  <a href="#visit">Visit</a>
+</nav>
 
-<section class="intro" aria-labelledby="intro-h">
-  <div class="intro-top">
-    <h2 id="intro-h" class="head reveal">Cut to your own line.</h2>
-    <div class="intro-notes reveal">
-      <p class="small">Suits for men and women, cut and finished to measure.</p>
-      <p class="small">Pieces that move through the wardrobe you already own.</p>
+<main>
+<section class="hero" aria-labelledby="hero-h">
+  <img src="assets/steppe.jpg" width="2400" height="1600" alt="Golden grassland under a blue sky, the Mongolian steppe">
+  <div class="hero-in">
+    <p class="caps">Made to measure · Bespoke</p>
+    <h1 id="hero-h">Cut to your own line</h1>
+    <p>Refined, versatile suits and pieces for men and women, made in Ulaanbaatar from fine cloth with a precise cut.</p>
+    <div class="btns"><a class="btn btn-solid" href="#visit">Book a fitting</a><a class="btn btn-line" href="#house">Read our story</a></div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="band-h">
+  <p class="caps rv">A considered approach to personal tailoring</p>
+  <h2 class="display rv" id="band-h">For her and for him</h2>
+  <p class="rv">Every LINE Styling piece is cut to your measurements, then made to move through the wardrobe you already own: a suit worn together, a jacket worn alone, trousers that meet everything else you have. Confident, strong and beautiful people deserve a line that says so quietly.</p>
+  <a class="btn btn-dark rv" href="#visit">Contact us to find out more</a>
+</section>
+
+<section class="sec" id="cloths" aria-labelledby="cloth-h">
+  <div class="sec-h rv"><p class="caps">The cloth room</p><h2 class="display" id="cloth-h">Begin with the cloth</h2></div>
+  <div class="cloths">
+    <article class="cloth rv"><a href="#visit"><div class="frame"><svg viewBox="0 0 400 500" role="img" aria-label="Navy barathea swatch"><defs><pattern id="a" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="scale(2.4)"><rect width="6" height="6" fill="#1a2a4a"/><circle cx="1.5" cy="1.5" r="1.1" fill="#233659"/><circle cx="4.5" cy="4.5" r="1.1" fill="#142038"/></pattern></defs><rect width="400" height="500" fill="url(#a)"/></svg></div><h3>Navy barathea</h3><p>Close, dry weave. Holds a sharp edge.</p></a></article>
+    <article class="cloth rv"><a href="#visit"><div class="frame"><svg viewBox="0 0 400 500" role="img" aria-label="Charcoal flannel swatch"><defs><pattern id="b" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="scale(2.4)"><rect width="4" height="4" fill="#3b3e44"/><path d="M0 4L4 0" stroke="#464a51"/><path d="M0 0L4 4" stroke="#34373c" stroke-width=".6"/></pattern></defs><rect width="400" height="500" fill="url(#b)"/></svg></div><h3>Charcoal flannel</h3><p>Soft-faced and weighted, with a fine drape.</p></a></article>
+    <article class="cloth rv"><a href="#visit"><div class="frame"><svg viewBox="0 0 400 500" role="img" aria-label="Stone twill swatch"><defs><pattern id="c" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(-35) scale(1.8)"><rect width="12" height="12" fill="#cfc6b3"/><rect width="12" height="5" fill="#c3b9a4"/><rect y="5" width="12" height="1.5" fill="#dcd4c3"/></pattern></defs><rect width="400" height="500" fill="url(#c)"/></svg></div><h3>Stone twill</h3><p>A light neutral with a visible diagonal rib.</p></a></article>
+    <article class="cloth rv"><a href="#visit"><div class="frame"><svg viewBox="0 0 400 500" role="img" aria-label="Bottle herringbone swatch"><defs><pattern id="d" width="32" height="24" patternUnits="userSpaceOnUse" patternTransform="scale(1.4)"><rect width="32" height="24" fill="#16402b"/><path d="M0 12L8 4L16 12L24 4L32 12M0 24L8 16L16 24L24 16L32 24" fill="none" stroke="#2a5c42" stroke-width="3"/><path d="M0 12L8 20L16 12L24 20L32 12M0 0L8 8L16 0L24 8L32 0" fill="none" stroke="#0f2d1e" stroke-width="3"/></pattern></defs><rect width="400" height="500" fill="url(#d)"/></svg></div><h3>Bottle herringbone</h3><p>Quiet from across the room, rich up close.</p></a></article>
+  </div>
+  <p class="center"><a class="btn btn-dark" href="#visit">Request swatches</a></p>
+</section>
+
+<section class="split" id="wardrobe" aria-labelledby="ward-h">
+  <div class="split-img"><img src="assets/trousers.jpg" width="1400" height="2285" alt="Grey wool trousers turned inside out, showing the canvas and seams" loading="lazy"></div>
+  <div class="split-txt">
+    <p class="caps rv">Men's and women's tailoring</p>
+    <h2 class="display rv" id="ward-h">A complete wardrobe.</h2>
+    <p class="rv">Suits, jackets, trousers, waistcoats and coats, each cut so it works alone and works together. Choose one piece or build the whole.</p>
+    <ul class="pieces rv">
+      <li><a href="#visit">Suits <span aria-hidden="true">→</span></a></li>
+      <li><a href="#visit">Jackets <span aria-hidden="true">→</span></a></li>
+      <li><a href="#visit">Trousers <span aria-hidden="true">→</span></a></li>
+      <li><a href="#visit">Waistcoats <span aria-hidden="true">→</span></a></li>
+      <li><a href="#visit">Coats <span aria-hidden="true">→</span></a></li>
+      <li><a href="#visit">Separates <span aria-hidden="true">→</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="campaign" aria-labelledby="camp-h">
+  <video muted loop playsinline autoplay preload="metadata" poster="assets/tailor-loop-poster.jpg" aria-hidden="true"><source src="assets/tailor-loop.webm" type="video/webm"></video>
+  <div>
+    <p class="caps">Before the first cut</p>
+    <h2 class="display" id="camp-h" style="font-style:italic">A pattern for one body.</h2>
+    <p>Every garment starts as lines on paper, drafted to your measurements and adjusted at each fitting until the cloth stands as you do.</p>
+    <a class="btn btn-line" href="#services">See how it works</a>
+  </div>
+</section>
+
+<section class="sec" id="services" aria-labelledby="serv-h">
+  <div class="sec-h rv"><p class="caps">Four ways to be fitted</p><h2 class="display" id="serv-h">Made in Ulaanbaatar.</h2></div>
+  <div class="four">
+    <article class="rv"><span class="num">i.</span><h3>Consultation</h3><p>We talk about how you dress, what you already own and what you need, then choose cloth together.</p><a class="link" href="#visit">Book a visit</a></article>
+    <article class="rv"><span class="num">ii.</span><h3>Made to Measure</h3><p>A house pattern adjusted to your body, with cloth, lining, lapel and buttons chosen with your fitter.</p><a class="link" href="#visit">Book a fitting</a></article>
+    <article class="rv"><span class="num">iii.</span><h3>Bespoke</h3><p>A paper pattern cut for you alone, kept on file. Several fittings and finishing by hand.</p><a class="link" href="#visit">Meet a cutter</a></article>
+    <article class="rv"><span class="num">iv.</span><h3>Alterations</h3><p>Adjustments and refreshes so the pieces you already own keep their line.</p><a class="link" href="#visit">Enquire</a></article>
+  </div>
+</section>
+
+<section class="sec" id="house" aria-labelledby="house-h">
+  <div class="story">
+    <figure class="rv"><img src="assets/amman-schneider.jpg" width="1400" height="2290" alt="Woodcut of a tailor's workshop with a master cutting cloth" loading="lazy"><figcaption>A tailor's workshop, 1568. Jost Amman.</figcaption></figure>
+    <div class="story-t">
+      <p class="caps rv">The house</p>
+      <h2 class="display rv vh" id="house-h">The house</h2>
+      <blockquote class="rv">Cloth is cut once. Everything before the shears is measuring, and everything after is the slow work of making a flat piece stand for a body.</blockquote>
+      <p class="rv">LINE Styling is a made-to-measure tailoring house in Ulaanbaatar. We dress confident people in refined, versatile pieces, in good fabric, with a precise cut.</p>
+      <a class="btn btn-dark rv" href="#visit">Book a fitting</a>
     </div>
   </div>
-  <figure class="panorama">
-    <img src="assets/steppe.jpg" width="2400" height="1600" alt="Golden grassland under a blue sky with scattered cloud, the Mongolian steppe" loading="lazy">
-    <figcaption class="small">The Mongolian steppe</figcaption>
-  </figure>
 </section>
 
-<section class="cloth" id="cloth" aria-labelledby="cloth-h">
-  <div class="cloth-plate">
-    <svg class="swatch" role="img" aria-label="Cloth swatch: navy barathea" viewBox="0 0 600 600" data-cloth="0">
-      <defs>
-        <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .5 0"/></filter>
-        <pattern id="p-barathea" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="scale(3)"><rect width="6" height="6" fill="#1a2a4a"/><circle cx="1.5" cy="1.5" r="1.1" fill="#233659"/><circle cx="4.5" cy="4.5" r="1.1" fill="#142038"/></pattern>
-        <pattern id="p-flannel" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="scale(3)"><rect width="4" height="4" fill="#3b3e44"/><path d="M0 4L4 0" stroke="#464a51" stroke-width="1"/><path d="M0 0L4 4" stroke="#34373c" stroke-width=".6"/></pattern>
-        <pattern id="p-twill" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(-35) scale(2)"><rect width="12" height="12" fill="#cfc6b3"/><rect width="12" height="5" fill="#c3b9a4"/><rect y="5" width="12" height="1.5" fill="#dcd4c3"/></pattern>
-        <pattern id="p-herring" width="32" height="24" patternUnits="userSpaceOnUse" patternTransform="scale(1.6)"><rect width="32" height="24" fill="#16402b"/><path d="M0 12L8 4L16 12L24 4L32 12M0 24L8 16L16 24L24 16L32 24" fill="none" stroke="#2a5c42" stroke-width="3"/><path d="M0 12L8 20L16 12L24 20L32 12M0 0L8 8L16 0L24 8L32 0" fill="none" stroke="#0f2d1e" stroke-width="3"/></pattern>
-      </defs>
-      <rect width="600" height="600" fill="url(#p-barathea)" data-weave="0"/>
-      <rect width="600" height="600" fill="url(#p-flannel)" data-weave="1" hidden/>
-      <rect width="600" height="600" fill="url(#p-twill)" data-weave="2" hidden/>
-      <rect width="600" height="600" fill="url(#p-herring)" data-weave="3" hidden/>
-      <rect width="600" height="600" filter="url(#grain)"/>
-    </svg>
-  </div>
-
-  <div class="cloth-info">
-    <h2 id="cloth-h" class="head reveal">Choose your cloth</h2>
-
-    <div class="tabs reveal" role="tablist" aria-label="Cloths">
-      <button type="button" role="tab" id="tab-0" aria-selected="true" aria-controls="cloth-panel" data-i="0">Navy barathea</button>
-      <button type="button" role="tab" id="tab-1" aria-selected="false" aria-controls="cloth-panel" data-i="1" tabindex="-1">Charcoal flannel</button>
-      <button type="button" role="tab" id="tab-2" aria-selected="false" aria-controls="cloth-panel" data-i="2" tabindex="-1">Stone twill</button>
-      <button type="button" role="tab" id="tab-3" aria-selected="false" aria-controls="cloth-panel" data-i="3" tabindex="-1">Bottle herringbone</button>
-    </div>
-
-    <div id="cloth-panel" class="cloth-panel reveal" role="tabpanel" aria-labelledby="tab-0" tabindex="0">
-      <h3 class="lead" id="cloth-name">Navy barathea</h3>
-      <p id="cloth-desc">A close, dry weave that holds a sharp edge. The ground of the dark suit, for the office and for the evening.</p>
-    </div>
-
-    <div class="cells">
-      <a class="cell cell-ink" href="https://www.facebook.com/line.styling/" id="cloth-book" rel="noopener">Book a fitting in this cloth</a>
-      <a class="cell cell-tone" href="https://www.instagram.com/linestyling/" rel="noopener">See recent work</a>
-    </div>
+<section class="visit" id="visit" aria-labelledby="visit-h">
+  <h2 class="display" id="visit-h">Visit LINE Styling.</h2>
+  <div class="visit-cols">
+    <div><h3>Ulaanbaatar</h3><p>Mongolia<br>Fittings by appointment</p><ul class="caps"><li>Bespoke</li><li>Made to measure</li><li>Alterations</li></ul></div>
+    <div><h3>Get in touch</h3><p>Message us to arrange a consultation.</p><p style="margin-top:14px"><a class="btn btn-line" href="https://www.facebook.com/line.styling/" rel="noopener">Message us</a></p></div>
   </div>
 </section>
-
-<section class="process" id="process" aria-labelledby="process-h">
-  <div class="process-lead">
-    <h2 id="process-h" class="head reveal">Four visits, one suit</h2>
-    <p class="reveal">Every suit is built in stages, and you are in the room for each of them. Between visits the cloth is cut, basted and shaped by hand to your measurements.</p>
-  </div>
-
-  <div class="slip reveal">
-    <div class="slip-body">
-      <h3>First week</h3>
-      <ul>
-        <li><span>How you dress, and what you need</span><i aria-hidden="true"></i><span>45 min</span></li>
-        <li><span>Measurements and choice of cloth</span><i aria-hidden="true"></i><span>60 min</span></li>
-      </ul>
-      <h3>Third week</h3>
-      <ul>
-        <li><span>Baste fitting on the first cut</span><i aria-hidden="true"></i><span>40 min</span></li>
-        <li><span>Adjustments to the pattern</span><i aria-hidden="true"></i><span>in the workshop</span></li>
-      </ul>
-      <h3>Fifth week</h3>
-      <ul>
-        <li><span>Forward fitting</span><i aria-hidden="true"></i><span>30 min</span></li>
-        <li><span>Finishing, pressing, last details</span><i aria-hidden="true"></i><span>in the workshop</span></li>
-      </ul>
-      <p class="slip-final">Your suit, ready to wear <span>about six weeks</span></p>
-    </div>
-    <svg class="zig" viewBox="0 0 440 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path id="zigpath" d="M0 0H440V1H0Z"/></svg>
-  </div>
-</section>
-
-<section class="archive" id="archive" aria-labelledby="archive-h">
-  <h2 id="archive-h" class="head reveal">Tools of the trade</h2>
-
-  <figure class="pic pic-a wipe">
-    <img src="assets/trousers.jpg" width="1400" height="2285" alt="A pair of grey wool trousers turned inside out, showing the canvas lining and seams" loading="lazy">
-    <figcaption class="small">Trousers turned inside out: the work you do not see.</figcaption>
-  </figure>
-  <figure class="pic pic-b wipe">
-    <img src="assets/amman-schneider.jpg" width="1400" height="2290" alt="Woodcut of a tailor's workshop with a master cutting cloth at a table" loading="lazy">
-    <figcaption class="small">A tailor's workshop, 1568.</figcaption>
-  </figure>
-
-  <p class="archive-note reveal">Cloth is cut once. Everything before the shears is measuring, and everything after is the slow work of making a flat piece stand for a body.</p>
-</section>
-
-<section class="house" id="house" aria-labelledby="house-h">
-  <div class="house-text">
-    <h2 id="house-h" class="head reveal">Strong, beautiful and unhurried</h2>
-    <p class="reveal">LINE Styling is a made-to-measure tailoring house in Ulaanbaatar. We cut refined, versatile suits and separates for men and for women, in fine cloth, with a precise line.</p>
-    <p class="reveal">Each piece is made to transform: worn together as a suit, or broken up and mixed with what already hangs in your wardrobe.</p>
-    <p class="reveal">We dress confident people. The cut should say so quietly.</p>
-  </div>
-  <figure class="house-pic reveal">
-    <video muted loop playsinline autoplay preload="metadata" poster="assets/tailor-loop-poster.jpg" aria-label="A pattern being drafted in chalk lines on paper at a tailor's table">
-      <source src="assets/tailor-loop.webm" type="video/webm">
-    </video>
-    <figcaption class="small">A pattern drafted on paper before the first cut.</figcaption>
-  </figure>
-</section>
-
-<section class="contact" id="contact" aria-labelledby="contact-h">
-  <h2 id="contact-h" class="visually-hidden">Contact LINE Styling</h2>
-  <p class="row row-a">LINE Styling</p>
-  <p class="row row-b">Ulaanbaatar, Mongolia</p>
-  <p class="row row-a">Fittings by appointment</p>
-  <p class="row row-b"><a href="https://www.facebook.com/line.styling/" rel="noopener">facebook.com/line.styling</a></p>
-  <p class="row row-a"><a href="https://www.instagram.com/linestyling/" rel="noopener">@linestyling</a></p>
-  <p class="row row-greet"><span>Hello</span><a class="round" href="https://www.facebook.com/line.styling/" rel="noopener" aria-label="Message LINE Styling on Facebook"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></a></p>
-</section>
-
 </main>
 
 <footer class="foot">
-  <div class="foot-top">
-    <div>
-      <p class="head foot-invite">Come in for a fitting.</p>
-      <a class="btn btn-inv" href="https://www.facebook.com/line.styling/" rel="noopener">Book a fitting</a>
-    </div>
-    <ul class="foot-links">
-      <li><a href="https://www.facebook.com/line.styling/" rel="noopener">Facebook</a></li>
-      <li><a href="https://www.instagram.com/linestyling/" rel="noopener">Instagram</a></li>
-      <li><a href="#top">Back to top</a></li>
-    </ul>
+  <div class="foot-grid">
+    <div><b>LINE STYLING</b><p>Bespoke tailoring for men and women.<br>Ulaanbaatar, Mongolia.</p></div>
+    <nav aria-label="Services"><h3>Services</h3><ul><li><a href="#services">Made to Measure</a></li><li><a href="#services">Bespoke</a></li><li><a href="#services">Alterations</a></li></ul></nav>
+    <nav aria-label="House"><h3>The house</h3><ul><li><a href="#house">Our story</a></li><li><a href="#cloths">Cloth</a></li><li><a href="#wardrobe">Wardrobe</a></li></ul></nav>
+    <nav aria-label="Follow"><h3>Follow</h3><ul><li><a href="https://www.facebook.com/line.styling/" rel="noopener">Facebook</a></li><li><a href="https://www.instagram.com/linestyling/" rel="noopener">Instagram</a></li></ul></nav>
   </div>
-  <div class="foot-credits small">
-    <p>© LINE Styling, Ulaanbaatar. Pictures via Wikimedia Commons: <a href="https://commons.wikimedia.org/w/index.php?curid=82172527">“Tailor’s Shears and Iron”</a>, John Bodine (CC0); <a href="https://commons.wikimedia.org/w/index.php?curid=7439002">“Mongolia steppe”</a>, Marked do (CC BY 3.0); <a href="https://commons.wikimedia.org/w/index.php?curid=59558018">“Men’s trousers inside out”</a>, Kotivalo (CC0); <a href="https://commons.wikimedia.org/w/index.php?curid=36263437">“Der Schneider”</a>, Jost Amman (CC BY 4.0); <a href="https://commons.wikimedia.org/wiki/File:Tailor_14.webm">“Tailor 14”</a> video, daSupremo (CC BY-SA 4.0).</p>
+  <div class="foot-base">
+    <p>© LINE Styling. Pictures via Wikimedia Commons: “Mongolia steppe”, Marked do (CC BY 3.0); “Men’s trousers inside out”, Kotivalo (CC0); “Der Schneider”, Jost Amman (CC BY 4.0); “Tailor 14” video, daSupremo (CC BY-SA 4.0).</p>
+    <a href="#top">Back to top</a>
   </div>
-  <p class="foot-mark" aria-hidden="true">LINE Styling</p>
 </footer>
 
-<script src="js/main.js"></script>
+<script>
+(() => {
+  const top = document.getElementById('top'), btn = document.getElementById('menuBtn'), dr = document.getElementById('drawer'), sc = document.getElementById('scrim'), cl = document.getElementById('menuClose');
+  const onScroll = () => top.classList.toggle('solid', scrollY > innerHeight * 0.6);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  const set = (o) => { dr.classList.toggle('open', o); sc.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); dr.setAttribute('aria-hidden', !o); (o ? cl : btn).focus(); };
+  btn.addEventListener('click', () => set(true)); cl.addEventListener('click', () => set(false)); sc.addEventListener('click', () => set(false));
+  dr.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { dr.classList.remove('open'); sc.classList.remove('open'); btn.setAttribute('aria-expanded', false); dr.setAttribute('aria-hidden', true); }));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && dr.classList.contains('open')) set(false); });
+  const els = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('section').forEach(s => s.querySelectorAll('.rv').forEach((e, i) => e.style.setProperty('--d', i * 80 + 'ms')));
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 });
+    els.forEach(e => io.observe(e));
+  } else els.forEach(e => e.classList.add('in'));
+})();
+</script>
 </body>
 </html>
